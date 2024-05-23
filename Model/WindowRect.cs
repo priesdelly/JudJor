@@ -14,18 +14,25 @@ public struct WindowRect
     public int Width
     {
         get => Right - Left;
-        private set {  }
+        set {
+            Right = Left + value;
+        }
     }
 
     public int Height
     {
         get => Bottom - Top;
-        private set { }
+        private set { 
+            Bottom = Top + value;
+        }
     }
 
     public Size Size {
         get => new(Width, Height);
-        private set { }
+        private set { 
+            Width = value.Width;
+            Height = value.Height;
+        }
     }
         
     public Point Location
