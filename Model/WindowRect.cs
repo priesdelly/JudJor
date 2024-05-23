@@ -39,5 +39,21 @@ public struct WindowRect
     {
         get => new(Left, Top);
         private set { }
+
+    public void Offset(int deltaX, int deltaY)
+    {
+        Top += deltaY;
+        Left += deltaX;
+        Bottom += deltaY;
+        Right += deltaY;
+    }
+
+    public void Inflate(int dl, int dt, int dr, int db)
+    {
+        Left -= dl;
+        Top -= dt;
+        Right += dr;
+        Bottom += db;
+    }
     }
 }
