@@ -38,7 +38,10 @@ public struct WindowRect
     public Point Location
     {
         get => new(Left, Top);
-        private set { }
+        private set {
+          Offset(value.X - Left, value.Y - Top);  
+        }
+    }
 
     public void Offset(int deltaX, int deltaY)
     {
