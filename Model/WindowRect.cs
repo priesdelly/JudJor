@@ -55,5 +55,15 @@ public struct WindowRect
         Right += dr;
         Bottom += db;
     }
+
+    public static bool operator ==(WindowRect a, WindowRect b)
+    {
+        return (a.Left == b.Left) && (a.Right == b.Right) &&
+            (a.Top == b.Top) && (a.Bottom == b.Bottom);
+    }
+
+    public static bool operator !=(WindowRect a, WindowRect b)
+    {
+        return !(a == b);
     }
 }
