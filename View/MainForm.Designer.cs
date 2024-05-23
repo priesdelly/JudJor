@@ -37,13 +37,15 @@ partial class MainForm
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(784, 561);
-        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
         MaximizeBox = false;
         MaximumSize = new System.Drawing.Size(800, 600);
         MinimumSize = new System.Drawing.Size(800, 600);
         Name = "MainForm";
         StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        Text = "Judjor - Window Alignment";
+        Text = "Judjor";
+        FormClosed += MainForm_FormClosed;
+        Load += MainForm_Load;
         Resize += MainForm_Resize;
         ResumeLayout(false);
     }
