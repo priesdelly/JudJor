@@ -4,7 +4,6 @@ using JudJor.Properties;
 using JudJor.View;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace JudJor;
