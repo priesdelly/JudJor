@@ -44,7 +44,7 @@ public partial class MainForm : Form
         var screenWidth = screenArea.Width.ToString();
         var screenHeight = screenArea.Height.ToString();
 
-        label1.Text = $"Title: {windowText}\nPosition: {rect.Position}\n Size: {rect.Size} \n Screen Width: {screenWidth} \n Screen Height: {screenHeight}";
+        label1.Text = $"Title: {windowText}\nPosition: {rect.Location}\n Size: {rect.Size} \n Screen Width: {screenWidth} \n Screen Height: {screenHeight}";
     }
 
     private void MainForm_Resize(object sender, System.EventArgs e)

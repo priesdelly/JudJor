@@ -28,7 +28,7 @@ public struct WindowRect
         private set { }
     }
         
-    public Point Position
+    public Point Location
     {
         get => new(Left, Top);
         private set { }
