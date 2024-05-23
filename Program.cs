@@ -10,6 +10,10 @@ namespace JudJor;
 
 internal static class Program
 {
+
+    public static bool ARGS_HIDDEN = false;
+    public static bool ARGS_DEBUG = false;
+
     /// <summary>
     /// The entry point of the application.
     /// </summary>
@@ -35,7 +39,7 @@ internal static class Program
 public class MainApplicationContext : ApplicationContext
 {
     private MainForm _mainForm = new();
-    private bool _argsHidden = false;
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainApplicationContext"/> class.
@@ -47,7 +51,7 @@ public class MainApplicationContext : ApplicationContext
         ParseArgs(args);
         CreateTrayIcon();
 
-        if (!_argsHidden)
+        if (!Program.ARGS_HIDDEN)
         {
             _mainForm.Show();
         }
@@ -66,10 +70,14 @@ public class MainApplicationContext : ApplicationContext
             {
                 if (o.Hidden)
                 {
-                    _argsHidden = true;
+                    Program.ARGS_HIDDEN = true;
+                }
+
+                if (o.Debug)
+                {
+                    Program.ARGS_DEBUG = true;
                 }
             });
-
     }
 
     /// <summary>

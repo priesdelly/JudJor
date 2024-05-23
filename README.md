@@ -1,7 +1,28 @@
 # Judjor - Window Alignment
 
-TODO
+## Feature
+- Left
+- Right
+- Top
+- Down
+
+- Top Left
+- Top Right
+- Bottom Left
+- Bottom Right
+
+- Left Third
+- Left Two Third
+- Center Third
+- Right Third
+- Right Two Third
+
+- Center 
+
+## TODO
 - 
+
+
 
 ## Contributors
 
