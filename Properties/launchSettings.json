@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "JudJor": {
+      "commandName": "Project"
+    },
+    "JudJor --hidden": {
+      "commandName": "Project",
+      "commandLineArgs": "--hidden"
+    }
+  }
+}
