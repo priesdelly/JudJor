@@ -49,7 +49,7 @@ public struct WindowRect
         Top += deltaY;
         Left += deltaX;
         Bottom += deltaY;
-        Right += deltaY;
+        Right += deltaX;
     }
 
     public void Inflate(int dl, int dt, int dr, int db)
