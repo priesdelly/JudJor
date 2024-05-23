@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace JudJor.Model;
 
+// Is this intended to be used with Win32 API?, if so, this should be named with their corresponding name.
 [StructLayout(LayoutKind.Sequential)]
 public struct WindowRect
 {
