@@ -43,7 +43,8 @@ partial class MainForm
         MinimumSize = new System.Drawing.Size(800, 600);
         Name = "MainForm";
         StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        Text = Resources.MainForm_Title;
+        Text = "Judjor - Window Alignment";
+        Resize += MainForm_Resize;
         ResumeLayout(false);
     }
 

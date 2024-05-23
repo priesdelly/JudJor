@@ -11,10 +11,14 @@ namespace JudJor;
 
 internal static class Program
 {
+    /// <summary>
+    /// The entry point of the application.
+    /// </summary>
+    /// <param name="args">Command line arguments.</param>
     [STAThread]
     private static void Main(string[] args)
     {
-        //Prevent duplicate instances
+        // Prevent duplicate instances
         var processName = AppDomain.CurrentDomain.FriendlyName;
         var exists = Process.GetProcessesByName(processName).Length > 1;
 
@@ -31,12 +35,31 @@ internal static class Program
 
 public class MainApplicationContext : ApplicationContext
 {
-    private MainForm mainForm;
-    private bool ArgsHidden;
+    private MainForm _mainForm = new();
+    private bool _argsHidden = false;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainApplicationContext"/> class.
+    /// Parses the application arguments, creates a system tray icon, and shows the main form if the arguments are not hidden.
+    /// </summary>
+    /// <param name="args">The command line arguments.</param>
     public MainApplicationContext(string[] args)
     {
+        ParseArgs(args);
+        CreateTrayIcon();
 
+        if (!_argsHidden)
+        {
+            _mainForm.Show();
+        }
+    }
+
+    /// <summary>
+    /// Parses the application arguments.
+    /// </summary>
+    /// <param name="args">The command line arguments.</param>
+    private void ParseArgs(string[] args)
+    {
         //Parse application arguments
         Parser.Default
             .ParseArguments<ArgsOption>(args)
@@ -44,10 +67,18 @@ public class MainApplicationContext : ApplicationContext
             {
                 if (o.Hidden)
                 {
-                    ArgsHidden = true;
+                    _argsHidden = true;
                 }
             });
 
+    }
+
+    /// <summary>
+    /// Creates a system tray icon with a menu that contains two items: "Show" and "Exit".
+    /// The "Show" item displays the main form, while the "Exit" item exits the application.
+    /// </summary>
+    private void CreateTrayIcon()
+    {
         // Create a simple tray menu with only one item.
         var trayMenu = new ContextMenuStrip();
         trayMenu.Items.Add(Resources.TrayIcon_Menu_Show, null, TrayIcon_OnShow);
@@ -67,43 +98,27 @@ public class MainApplicationContext : ApplicationContext
 
         trayIcon.MouseDoubleClick -= TrayIcon_OnShow;
         trayIcon.MouseDoubleClick += TrayIcon_OnShow;
-
-        mainForm = new(); 
-        mainForm.Resize -= MainForm_Resize;
-        mainForm.Resize += MainForm_Resize;
-        if (!ArgsHidden)
-        {
-            mainForm.Show();
-        }
     }
 
     private void TrayIcon_OnShow(object sender, EventArgs e)
     {
-        if (mainForm.IsDisposed)
+        if (_mainForm.IsDisposed)
         {
-            mainForm = new();
+            _mainForm = new();
         }
 
-        if (!mainForm.Visible)
+        if (!_mainForm.Visible)
         {
-            mainForm.Show();
+            _mainForm.Show();
         }
 
-        mainForm.WindowState = FormWindowState.Normal;
-        mainForm.ShowInTaskbar = true;
-        mainForm.Activate();
+        _mainForm.WindowState = FormWindowState.Normal;
+        _mainForm.ShowInTaskbar = true;
+        _mainForm.Activate();
     }
 
     private void TrayIcon_OnExit(object sender, EventArgs e)
     {
         Application.Exit();
-    }
-
-    private void MainForm_Resize(object sender, EventArgs e)
-    {
-        if (mainForm.WindowState == FormWindowState.Minimized)
-        {
-            mainForm.Hide();
-        }
     }
 }
