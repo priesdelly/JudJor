@@ -1,10 +1,8 @@
 using JudJor.Properties;
-using System.Drawing;
 using System.Text;
 using System;
 using System.Windows.Forms;
 using JudJor.Repository;
-using System.Linq;
 using JudJor.Model;
 using System.Runtime.InteropServices;
 
