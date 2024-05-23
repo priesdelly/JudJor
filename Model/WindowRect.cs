@@ -12,6 +12,28 @@ public struct WindowRect
     public int Right;
     public int Bottom;
 
+    public WindowRect(int left, int top, int right, int bottom) : this()
+    {
+        Left = left;
+        Top = top;
+        Right = right;
+        Bottom = bottom;
+    }
+
+    // TODO: Instead of implementing all these stuffs, just create a method for converting this struct into System.Drawing.Rectangle
+
+    public static WindowRect FromRectangle(Rectangle r)
+    {
+        return new WindowRect
+        {
+            Left = r.Left,
+            Top = r.Top,
+            Right = r.Right,
+            Bottom = r.Bottom,
+        };
+    }
+
+
     public int Width
     {
         get => Right - Left;
