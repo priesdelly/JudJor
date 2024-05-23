@@ -1,4 +1,33 @@
 {
-  "projectName": "Judjor",
-  "projectOwner": "JudJor Co., Ltd.",
+  "projectName": "JudJor",
+  "projectOwner": "priesdelly",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "priesdelly",
+      "name": "Priesdelly",
+      "avatar_url": "https://avatars.githubusercontent.com/u/304075?v=4",
+      "profile": "https://github.com/priesdelly",
+      "contributions": [
+        "code",
+        "talk"
+      ]
+    },
+    {
+      "login": "vittee",
+      "name": "Wittawas Nakkasem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/403872?v=4",
+      "profile": "https://github.com/vittee",
+      "contributions": [
+        "code",
+        "talk",
+        "mentoring"
+      ]
+    }
+  ]
 }
