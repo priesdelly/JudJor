@@ -1,10 +1,10 @@
-using JudJor.Properties;
-using System.Text;
 using System;
-using System.Windows.Forms;
-using JudJor.Repository;
-using JudJor.Model;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+using JudJor.Model;
+using JudJor.Properties;
+using JudJor.Repository;
 
 namespace JudJor.View;
 
@@ -15,7 +15,7 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-    private void MainForm_Load(object sender, System.EventArgs e)
+    private void MainForm_Load(object sender, EventArgs e)
     {
         Text = Resources.MainForm_Title;
         Icon = Resources.AppIcon;
@@ -38,7 +38,7 @@ public partial class MainForm : Form
         var windowText = new StringBuilder(256);
         _ = WindowAPI.GetWindowText(hWnd, windowText, windowText.Capacity);
 
-        WindowAPI.GetWindowRect(hWnd, out Model.WindowRect rect);
+        WindowAPI.GetWindowRect(hWnd, out WindowRect rect);
 
         var screenArea = Screen.FromHandle(hWnd).WorkingArea;
         var screenWidth = screenArea.Width.ToString();
@@ -47,37 +47,36 @@ public partial class MainForm : Form
         label1.Text = $"Title: {windowText}\nPosition: {rect.Location}\n Size: {rect.Size} \n Screen Width: {screenWidth} \n Screen Height: {screenHeight}";
     }
 
-    private void MainForm_Resize(object sender, System.EventArgs e)
+    private void MainForm_Resize(object sender, EventArgs e)
     {
         if (WindowState == FormWindowState.Minimized)
         {
-            this.Hide();
+            Hide();
         }
     }
 
     private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
     {
-
 #if DEBUG
         Application.Exit();
 #endif
-
     }
 
     private WindowRect GetWindowExtendedFrame(nint hWnd)
     {
-        if (Environment.OSVersion.Version.Major >= 6)
+        if (Environment.OSVersion.Version.Major < 6)
         {
-            WindowAPI.DwmGetWindowAttribute(hWnd, WindowAPI.DWMWA_EXTENDED_FRAME_BOUNDS, out WindowRect r1, Marshal.SizeOf(typeof(WindowRect)));
-            WindowAPI.GetWindowRect(hWnd, out WindowRect r2);
-
-            return new(
-                r1.Left - r2.Left, r2.Top - r1.Top,
-                r2.Right - r1.Right, r2.Bottom - r1.Bottom
-            );
+            return new();
         }
+        
+        WindowAPI.DwmGetWindowAttribute(hWnd, WindowAPI.DWMWA_EXTENDED_FRAME_BOUNDS, out WindowRect r1, Marshal.SizeOf(typeof(WindowRect)));
+        WindowAPI.GetWindowRect(hWnd, out WindowRect r2);
 
-        return new();
+        return new(
+            r1.Left - r2.Left, r2.Top - r1.Top,
+            r2.Right - r1.Right, r2.Bottom - r1.Bottom
+        );
+
     }
 
     //private float[] ComputeValueFractions(float value, params float[] fractions)
@@ -98,7 +97,7 @@ public partial class MainForm : Form
 
     private void SplitVertical(IntPtr hWnd, int boxIndex)
     {
-        var r = WindowRect.FromRectangle(Screen.FromHandle(hWnd).WorkingArea);      
+        var r = WindowRect.FromRectangle(Screen.FromHandle(hWnd).WorkingArea);
         var shadow = GetWindowExtendedFrame(hWnd);
 
         var width = r.Width / 2;
@@ -118,7 +117,7 @@ public partial class MainForm : Form
     {
         SplitVertical(Handle, 0);
     }
-  
+
     private void btnSplitRight_Click(object sender, EventArgs e)
     {
         SplitVertical(Handle, 1);
