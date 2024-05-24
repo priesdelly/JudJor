@@ -124,8 +124,11 @@
   <data name="MainForm_Title" xml:space="preserve">
     <value>Judjor - Window Alignment</value>
   </data>
+  <data name="TrayIcon_BalloonTip_Text" xml:space="preserve">
+    <value>JudJor is still running in system tray.</value>
+  </data>
   <data name="TrayIcon_BalloonTip_Title" xml:space="preserve">
-    <value />
+    <value>Still running</value>
   </data>
   <data name="TrayIcon_Menu_Exit" xml:space="preserve">
     <value>Exis</value>
