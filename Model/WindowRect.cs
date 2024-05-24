@@ -37,33 +37,29 @@ public struct WindowRect
     public int Width
     {
         get => Right - Left;
-        set {
-            Right = Left + value;
-        }
+        set { Right = Left + value; }
     }
 
     public int Height
     {
         get => Bottom - Top;
-        private set { 
-            Bottom = Top + value;
-        }
+        private set { Bottom = Top + value; }
     }
 
-    public Size Size {
+    public Size Size
+    {
         get => new(Width, Height);
-        private set { 
+        private set
+        {
             Width = value.Width;
             Height = value.Height;
         }
     }
-        
+
     public Point Location
     {
         get => new(Left, Top);
-        private set {
-          Offset(value.X - Left, value.Y - Top);  
-        }
+        private set { Offset(value.X - Left, value.Y - Top); }
     }
 
     public void Offset(int deltaX, int deltaY)
@@ -85,7 +81,7 @@ public struct WindowRect
     public static bool operator ==(WindowRect a, WindowRect b)
     {
         return (a.Left == b.Left) && (a.Right == b.Right) &&
-            (a.Top == b.Top) && (a.Bottom == b.Bottom);
+               (a.Top == b.Top) && (a.Bottom == b.Bottom);
     }
 
     public static bool operator !=(WindowRect a, WindowRect b)
