@@ -124,6 +124,9 @@
   <data name="MainForm_Title" xml:space="preserve">
     <value>Judjor - Window Alignment</value>
   </data>
+  <data name="TrayIcon_BalloonTip_Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="TrayIcon_Menu_Exit" xml:space="preserve">
     <value>Exis</value>
   </data>

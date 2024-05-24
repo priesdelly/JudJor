@@ -80,6 +80,24 @@ namespace JudJor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to JudJor is still running in system tray..
+        /// </summary>
+        internal static string TrayIcon_BalloonTip_Text {
+            get {
+                return ResourceManager.GetString("TrayIcon_BalloonTip_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Still running.
+        /// </summary>
+        internal static string TrayIcon_BalloonTip_Title {
+            get {
+                return ResourceManager.GetString("TrayIcon_BalloonTip_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exis.
         /// </summary>
         internal static string TrayIcon_Menu_Exit {

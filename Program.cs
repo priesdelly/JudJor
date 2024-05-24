@@ -1,16 +1,15 @@
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using CommandLine;
 using JudJor.Model;
 using JudJor.Properties;
 using JudJor.View;
-using System;
-using System.Diagnostics;
-using System.Windows.Forms;
 
 namespace JudJor;
 
 internal static class Program
 {
-
     public static bool ARGS_HIDDEN = false;
     public static bool ARGS_DEBUG = false;
 
@@ -98,8 +97,8 @@ public class MainApplicationContext : ApplicationContext
             Text = Resources.TrayIcon_Title,
             ContextMenuStrip = trayMenu,
             BalloonTipIcon = ToolTipIcon.Info,
-            BalloonTipTitle = "Still running",
-            BalloonTipText = "JudJor is still running in system tray",
+            BalloonTipTitle = Resources.TrayIcon_BalloonTip_Title,
+            BalloonTipText = Resources.TrayIcon_BalloonTip_Text,
             Visible = true
         };
 
